@@ -62,6 +62,10 @@ class EditStudentActivity : AppCompatActivity() {
 
         deleteButton.setOnClickListener {
             StudentRepository.deleteStudent(originalId)
+            setResult(RESULT_CANCELED)
+            val intent = Intent(this, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            startActivity(intent)
             finish()
         }
 
