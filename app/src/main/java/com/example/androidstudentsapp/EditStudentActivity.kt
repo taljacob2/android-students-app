@@ -7,6 +7,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import com.example.androidstudentsapp.model.Student
 import com.example.androidstudentsapp.model.StudentRepository
+import android.content.Intent
 
 class EditStudentActivity : AppCompatActivity() {
     private lateinit var nameEditText: EditText
@@ -52,6 +53,9 @@ class EditStudentActivity : AppCompatActivity() {
                     address = address,
                     isChecked = checkedCheckBox.isChecked
                 ))
+                val resultIntent = Intent()
+                resultIntent.putExtra(StudentDetailsActivity.EXTRA_STUDENT_ID, id)
+                setResult(RESULT_OK, resultIntent)
                 finish()
             }
         }

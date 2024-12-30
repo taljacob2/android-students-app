@@ -18,6 +18,8 @@ class StudentDetailsActivity : AppCompatActivity() {
     private lateinit var checkedCheckBox: CheckBox
     private lateinit var editButton: Button
 
+    private var currentStudentId: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_student_details)
@@ -37,14 +39,15 @@ class StudentDetailsActivity : AppCompatActivity() {
 
         editButton.setOnClickListener {
             val intent = Intent(this, EditStudentActivity::class.java)
-            intent.putExtra(EXTRA_STUDENT_ID, intent.getStringExtra(EXTRA_STUDENT_ID))
-            startActivity(intent)
+            intent.putExtra(EXTRA_STUDENT_ID, currentStudentId)
+            startActivityForResult(intent, EDIT_STUDENT_REQUEST)
         }
     }
 
     private fun loadStudent() {
-        val studentId = intent.getStringExtra(EXTRA_STUDENT_ID)
+        val studentId = currentStudentId ?: intent.getStringExtra(EXTRA_STUDENT_ID)
         studentId?.let { id ->
+            currentStudentId = id
             StudentRepository.getStudent(id)?.let { student ->
                 nameTextView.text = student.name
                 idTextView.text = student.id
@@ -55,6 +58,15 @@ class StudentDetailsActivity : AppCompatActivity() {
         }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == EDIT_STUDENT_REQUEST && resultCode == RESULT_OK) {
+            // Update the current student ID with the new one
+            currentStudentId = data?.getStringExtra(EXTRA_STUDENT_ID)
+            loadStudent()
+        }
+    }
+
     override fun onResume() {
         super.onResume()
         loadStudent()
@@ -62,5 +74,6 @@ class StudentDetailsActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_STUDENT_ID = "extra_student_id"
+        private const val EDIT_STUDENT_REQUEST = 1
     }
 } 
