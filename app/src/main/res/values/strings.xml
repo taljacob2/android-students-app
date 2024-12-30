@@ -6,4 +6,10 @@
     <string name="save">Save</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    
+    <!-- Screen titles -->
+    <string name="students_list">Students List</string>
+    <string name="new_student">New Student</string>
+    <string name="student_details">Student Details</string>
+    <string name="edit_student">Edit Student</string>
 </resources>
