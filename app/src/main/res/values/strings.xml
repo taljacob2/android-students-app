@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Android Students App</string>
-    <string name="buttonMainStopActivity">Stop Activity</string>
+    <string name="add_student">Add Student</string>
 </resources>

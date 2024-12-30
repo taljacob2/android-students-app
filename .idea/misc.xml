@@ -3,11 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Tal/Code/java/androidstudentsapp/app/src/main/res/layout/activity_main.xml" value="0.19492293744333636" />
+        <entry key="..\:/Tal/Code/java/MyApplication9/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Tal/Code/java/androidstudentsapp/app/src/main/res/layout/activity_main.xml" value="0.2798913043478261" />
+        <entry key="..\:/Tal/Code/java/androidstudentsapp/app/src/main/res/layout/item_student.xml" value="0.2798913043478261" />
+        <entry key="..\:/Tal/Code/java/androidtictactoe/app/src/main/res/layout/activity_main.xml" value="0.19492293744333636" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

@@ -1,28 +1,40 @@
 package com.example.androidstudentsapp
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import android.widget.Button
+import com.example.androidstudentsapp.model.StudentRepository
 
 class MainActivity : AppCompatActivity() {
-    private var button: Button? = null
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var addButton: Button
+    private lateinit var adapter: StudentListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        setupUi()
+        setupViews()
+        setupRecyclerView()
     }
 
-    private fun setupUi() {
-        button = findViewById(R.id.buttonMainStopActivity)
-        button!!.setOnClickListener { finish() }
+    private fun setupViews() {
+        recyclerView = findViewById(R.id.studentListRecyclerView)
+        addButton = findViewById(R.id.addStudentButton)
+        
+        addButton.setOnClickListener {
+            // TODO: Launch NewStudentActivity
+        }
     }
 
-    override fun onStop() {
-        super.onStop()
-
-        Log.d(MainActivity::class.java.name, "activity stopped")
+    private fun setupRecyclerView() {
+        adapter = StudentListAdapter(StudentRepository.getAllStudents()) { student ->
+            // TODO: Launch StudentDetailsActivity
+        }
+        
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = adapter
     }
 }
