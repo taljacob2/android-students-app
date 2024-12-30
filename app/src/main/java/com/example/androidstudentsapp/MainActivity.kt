@@ -1,4 +1,4 @@
-package com.example.androidtictactoe
+package com.example.androidstudentsapp
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
