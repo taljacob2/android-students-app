@@ -22,6 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NewStudentActivity" />
+        <activity android:name=".StudentDetailsActivity" />
+        <activity android:name=".EditStudentActivity" />
     </application>
 
 </manifest>

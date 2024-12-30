@@ -1,9 +1,10 @@
 package com.example.androidstudentsapp
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.widget.Button
 import com.example.androidstudentsapp.model.StudentRepository
 
@@ -25,16 +26,23 @@ class MainActivity : AppCompatActivity() {
         addButton = findViewById(R.id.addStudentButton)
         
         addButton.setOnClickListener {
-            // TODO: Launch NewStudentActivity
+            startActivity(Intent(this, NewStudentActivity::class.java))
         }
     }
 
     private fun setupRecyclerView() {
         adapter = StudentListAdapter(StudentRepository.getAllStudents()) { student ->
-            // TODO: Launch StudentDetailsActivity
+            val intent = Intent(this, StudentDetailsActivity::class.java)
+            intent.putExtra(StudentDetailsActivity.EXTRA_STUDENT_ID, student.id)
+            startActivity(intent)
         }
         
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        adapter.updateStudents(StudentRepository.getAllStudents())
     }
 }
