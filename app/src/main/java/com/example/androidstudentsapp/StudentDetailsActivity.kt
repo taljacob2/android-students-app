@@ -41,7 +41,7 @@ class StudentDetailsActivity : AppCompatActivity() {
             StudentRepository.getStudent(id)?.let { student ->
                 nameTextView.text = student.name
                 idTextView.text = student.id
-                avatarImageView.setImageResource(R.drawable.default_avatar)
+                avatarImageView.setImageResource(R.drawable.ic_person)
             }
         }
     }

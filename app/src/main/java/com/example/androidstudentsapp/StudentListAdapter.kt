@@ -35,7 +35,7 @@ class StudentListAdapter(
         holder.id.text = student.id
         holder.checkBox.isChecked = student.isChecked
         
-        // TODO: Set avatar image
+        holder.avatar.setImageResource(R.drawable.ic_person)
         
         holder.itemView.setOnClickListener {
             onStudentClick(student)
@@ -43,6 +43,7 @@ class StudentListAdapter(
         
         holder.checkBox.setOnClickListener {
             StudentRepository.toggleStudentCheck(student.id)
+            notifyItemChanged(position)
         }
     }
 
